@@ -9,6 +9,8 @@ class QueryByUid extends ApiAbstract
 
     public function submit()
     {
+        $response = null;
+
         foreach ($this->_endpoints() as $_endpoint) {
             $this->_current_endpoint = $_endpoint;
 
@@ -18,7 +20,9 @@ class QueryByUid extends ApiAbstract
                 $msg = $e->getMessage();
                 $response = '{ "errors":"' . $msg . '", "message":"' . $msg . '" }';
             }
+
             $response = new Response($response);
+
             if ($response->getUid()) {
                 break;
             }
@@ -27,12 +31,12 @@ class QueryByUid extends ApiAbstract
         return $response;
     }
 
-    protected function _endpoint()
+    protected function _endpoint(): string
     {
         return $this->_current_endpoint;
     }
 
-    public function setUid($uid)
+    public function setUid($uid): void
     {
         $this->_uid = $uid;
     }
@@ -42,17 +46,17 @@ class QueryByUid extends ApiAbstract
         return $this->_uid;
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
-        return '';
+        return [];
     }
 
     protected function _endpoints()
     {
         return [
-          Settings::$apiBase . '/beyag/payments/' . $this->getUid(),
-          Settings::$apiBase . '/beyag/transactions/' . $this->getUid(),
-          Settings::$gatewayBase . '/transactions/' . $this->getUid(),
+            Settings::$apiBase . '/beyag/payments/' . $this->getUid(),
+            Settings::$apiBase . '/beyag/transactions/' . $this->getUid(),
+            Settings::$gatewayBase . '/transactions/' . $this->getUid(),
         ];
     }
 }

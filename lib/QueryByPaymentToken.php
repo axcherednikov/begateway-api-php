@@ -6,12 +6,12 @@ class QueryByPaymentToken extends ApiAbstract
 {
     protected $_token;
 
-    protected function _endpoint()
+    protected function _endpoint(): string
     {
         return Settings::$checkoutBase . '/ctp/api/checkouts/' . $this->getToken();
     }
 
-    public function setToken($token)
+    public function setToken($token): void
     {
         $this->_token = $token;
     }
@@ -21,9 +21,9 @@ class QueryByPaymentToken extends ApiAbstract
         return $this->_token;
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
-        return '';
+        return [];
     }
 
     public function submit()

@@ -6,12 +6,12 @@ use Exception;
 
 class Logger
 {
-    const INFO = 0;
-    const WARNING = 1;
-    const ERROR = 2;
-    const DEBUG = 4;
+    public const INFO = 0;
+    public const WARNING = 1;
+    public const ERROR = 2;
+    public const DEBUG = 4;
 
-    private $_level;
+    private $_level = self::INFO;
     private static $instance;
     private $_output = 'php://stderr';
     private $_message_callback = null;
@@ -19,7 +19,6 @@ class Logger
 
     private function __construct()
     {
-        $this->_level = self::INFO;
     }
 
     public function write($msg, int $level = self::INFO, string $place = ''): void

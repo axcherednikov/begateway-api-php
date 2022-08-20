@@ -23,11 +23,11 @@ class ResponseCardToken extends ResponseBase
         }
     }
 
-    public function isSuccess()
+    public function isSuccess(): bool
     {
         return is_object($this->getResponse()) &&
-               isset($this->getResponse()->token) &&
-               is_string($this->getResponse()->token) &&
-               strlen($this->getResponse()->token) > 0;
+            isset($this->getResponse()->token) &&
+            is_string($this->getResponse()->token) &&
+            strlen($this->getResponse()->token) > 0;
     }
 }

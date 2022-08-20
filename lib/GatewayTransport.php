@@ -6,7 +6,7 @@ use Exception;
 
 class GatewayTransport
 {
-    public static function submit($host, $t_request, $headers = [], $curl_timeout = 30, $curl_connect_timeout = 10)
+    public static function submit(string $host, $t_request, $headers = [], $curl_timeout = 30, $curl_connect_timeout = 10)
     {
         $process = curl_init($host);
         $json = json_encode($t_request);

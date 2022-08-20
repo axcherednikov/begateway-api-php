@@ -12,7 +12,7 @@ abstract class ChildTransaction extends ApiAbstract
         $this->money = new Money();
     }
 
-    public function setParentUid($uid)
+    public function setParentUid($uid): void
     {
         $this->_parent_uid = $uid;
     }
@@ -22,13 +22,13 @@ abstract class ChildTransaction extends ApiAbstract
         return $this->_parent_uid;
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
         $request = [
-          'request' => [
-            'parent_uid' => $this->getParentUid(),
-            'amount' => $this->money->getCents(),
-          ],
+            'request' => [
+                'parent_uid' => $this->getParentUid(),
+                'amount' => $this->money->getCents(),
+            ],
         ];
 
         Logger::getInstance()->write($request, Logger::DEBUG, get_class() . '::' . __FUNCTION__);

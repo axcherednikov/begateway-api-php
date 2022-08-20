@@ -31,12 +31,12 @@ class Product extends ApiAbstract
         $this->_language = Language::getDefaultLanguage();
     }
 
-    protected function _endpoint()
+    protected function _endpoint(): string
     {
         return Settings::$apiBase . '/products';
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
         $request = [
             'name' => $this->getName(),
@@ -83,7 +83,7 @@ class Product extends ApiAbstract
         return new ResponseApiProduct($this->_remoteRequest());
     }
 
-    public function setName($name)
+    public function setName($name): void
     {
         $this->_name = $name;
     }
@@ -93,7 +93,7 @@ class Product extends ApiAbstract
         return $this->_name;
     }
 
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->_description = $description;
     }
@@ -103,7 +103,7 @@ class Product extends ApiAbstract
         return $this->_description;
     }
 
-    public function setQuantity($quantity)
+    public function setQuantity($quantity): void
     {
         $this->_quantity = $quantity;
     }
@@ -113,7 +113,7 @@ class Product extends ApiAbstract
         return $this->_quantity;
     }
 
-    public function setInfiniteState($state = true)
+    public function setInfiniteState($state = true): void
     {
         $this->_infinite = $state;
     }
@@ -123,7 +123,7 @@ class Product extends ApiAbstract
         return $this->_infinite;
     }
 
-    public function setImmortalState($state = true)
+    public function setImmortalState($state = true): void
     {
         $this->_immortal = $state;
     }
@@ -133,7 +133,7 @@ class Product extends ApiAbstract
         return $this->_immortal;
     }
 
-    public function setNotificationUrl($notification_url)
+    public function setNotificationUrl($notification_url): void
     {
         $this->_notification_url = $notification_url;
     }
@@ -143,7 +143,7 @@ class Product extends ApiAbstract
         return $this->_notification_url;
     }
 
-    public function setSuccessUrl($success_url)
+    public function setSuccessUrl($success_url): void
     {
         $this->_success_url = $success_url;
     }
@@ -153,7 +153,7 @@ class Product extends ApiAbstract
         return $this->_success_url;
     }
 
-    public function setFailUrl($fail_url)
+    public function setFailUrl($fail_url): void
     {
         $this->_fail_url = $fail_url;
     }
@@ -163,7 +163,7 @@ class Product extends ApiAbstract
         return $this->_fail_url;
     }
 
-    public function setReturnUrl($return_url)
+    public function setReturnUrl($return_url): void
     {
         $this->_return_url = $return_url;
     }
@@ -173,12 +173,12 @@ class Product extends ApiAbstract
         return $this->_return_url;
     }
 
-    public function setAuthorizationTransactionType()
+    public function setAuthorizationTransactionType(): void
     {
         $this->_transaction_type = 'authorization';
     }
 
-    public function setPaymentTransactionType()
+    public function setPaymentTransactionType(): void
     {
         $this->_transaction_type = 'payment';
     }
@@ -188,7 +188,7 @@ class Product extends ApiAbstract
         return $this->_transaction_type;
     }
 
-    public function setLanguage($language_code)
+    public function setLanguage($language_code): void
     {
         if (in_array($language_code, Language::getSupportedLanguages())) {
             $this->_language = $language_code;
@@ -204,7 +204,7 @@ class Product extends ApiAbstract
 
     // date when payment expires for payment
     // date is in ISO8601 format
-    public function setExpiryDate($date)
+    public function setExpiryDate($date): void
     {
         $iso8601 = null;
 
@@ -215,7 +215,7 @@ class Product extends ApiAbstract
         $this->_expired_at = $iso8601;
     }
 
-    public function setVisible(array $visible)
+    public function setVisible(array $visible): void
     {
         $this->_visible = $visible;
     }
@@ -230,102 +230,102 @@ class Product extends ApiAbstract
         return $this->_visible;
     }
 
-    public function setPhoneVisible()
+    public function setPhoneVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'phone');
     }
 
-    public function unsetPhoneVisible()
+    public function unsetPhoneVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['phone']);
     }
 
-    public function setAddressVisible()
+    public function setAddressVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'address');
     }
 
-    public function unsetAddressVisible()
+    public function unsetAddressVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['address']);
     }
 
-    public function setFirstNameVisible()
+    public function setFirstNameVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'first_name');
     }
 
-    public function unsetFirstNameVisible()
+    public function unsetFirstNameVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['first_name']);
     }
 
-    public function setLastNameVisible()
+    public function setLastNameVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'last_name');
     }
 
-    public function unsetLastNameVisible()
+    public function unsetLastNameVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['last_name']);
     }
 
-    public function setCityVisible()
+    public function setCityVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'city');
     }
 
-    public function unsetCityVisible()
+    public function unsetCityVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['city']);
     }
 
-    public function setStateVisible()
+    public function setStateVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'state');
     }
 
-    public function unsetStateVisible()
+    public function unsetStateVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['state']);
     }
 
-    public function setZipVisible()
+    public function setZipVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'zip');
     }
 
-    public function unsetZipVisible()
+    public function unsetZipVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['zip']);
     }
 
-    public function setCountryVisible()
+    public function setCountryVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'country');
     }
 
-    public function unsetCountryVisible()
+    public function unsetCountryVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['country']);
     }
 
-    public function setEmailVisible()
+    public function setEmailVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'email');
     }
 
-    public function unsetEmailVisible()
+    public function unsetEmailVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['email']);
     }
 
-    public function setBirthDateVisible()
+    public function setBirthDateVisible(): void
     {
         $this->_visible = self::_searchAndAdd($this->_visible, 'birth_date');
     }
 
-    public function unsetBirthDateVisible()
+    public function unsetBirthDateVisible(): void
     {
         $this->_visible = array_diff($this->_visible, ['birth_date']);
     }
@@ -346,8 +346,9 @@ class Product extends ApiAbstract
         // if not found, adds $value to $array and returns $array
         // otherwise returns not altered $array
         $arr = $array;
+
         if (! in_array($value, $arr)) {
-            array_push($arr, $value);
+            $arr[] = $value;
         }
 
         return $arr;

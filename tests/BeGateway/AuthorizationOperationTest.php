@@ -274,7 +274,7 @@ class AuthorizationOperationTest extends AbstractTestCase
         $this->assertNull($response->getMessage());
         $this->assertNotNull($response->getUid());
         $this->assertNotNull($response->getResponse()->transaction->redirect_url);
-        $this->assertTrue((bool) preg_match('/process/', $response->getResponse()->transaction->redirect_url));
+        $this->assertMatchesRegularExpression('/process/', $response->getResponse()->transaction->redirect_url);
         $this->assertEquals('incomplete', $response->getStatus());
         $this->assertEquals($cents, $response->getResponse()->transaction->amount);
 

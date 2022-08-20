@@ -6,7 +6,7 @@ class RefundOperation extends ChildTransaction
 {
     protected $_reason;
 
-    public function setReason($reason)
+    public function setReason($reason): void
     {
         $this->_reason = $reason;
     }
@@ -16,7 +16,7 @@ class RefundOperation extends ChildTransaction
         return $this->_reason;
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
         $request = parent::_buildRequestMessage();
 

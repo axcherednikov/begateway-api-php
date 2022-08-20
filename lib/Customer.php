@@ -17,7 +17,7 @@ class Customer
     protected $_customer_phone;
     protected $_customer_birth_date = null;
 
-    public function setIP($ip)
+    public function setIP($ip): void
     {
         $this->_customer_ip = $this->_setNullIfEmpty($ip);
     }
@@ -27,7 +27,7 @@ class Customer
         return $this->_customer_ip;
     }
 
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->_customer_email = $this->_setNullIfEmpty($email);
     }
@@ -37,7 +37,7 @@ class Customer
         return $this->_customer_email;
     }
 
-    public function setFirstName($first_name)
+    public function setFirstName($first_name): void
     {
         $this->_customer_first_name = $this->_setNullIfEmpty($first_name);
     }
@@ -47,7 +47,7 @@ class Customer
         return $this->_customer_first_name;
     }
 
-    public function setLastName($last_name)
+    public function setLastName($last_name): void
     {
         $this->_customer_last_name = $this->_setNullIfEmpty($last_name);
     }
@@ -57,7 +57,7 @@ class Customer
         return $this->_customer_last_name;
     }
 
-    public function setAddress($address)
+    public function setAddress($address): void
     {
         $this->_customer_address = $this->_setNullIfEmpty($address);
     }
@@ -67,7 +67,7 @@ class Customer
         return $this->_customer_address;
     }
 
-    public function setCity($city)
+    public function setCity($city): void
     {
         $this->_customer_city = $this->_setNullIfEmpty($city);
     }
@@ -77,7 +77,7 @@ class Customer
         return $this->_customer_city;
     }
 
-    public function setCountry($country)
+    public function setCountry($country): void
     {
         $this->_customer_country = $this->_setNullIfEmpty($country);
     }
@@ -87,7 +87,7 @@ class Customer
         return $this->_customer_country;
     }
 
-    public function setState($state)
+    public function setState($state): void
     {
         $this->_customer_state = $this->_setNullIfEmpty($state);
     }
@@ -97,7 +97,7 @@ class Customer
         return (in_array($this->_customer_country, ['US', 'CA'])) ? $this->_customer_state : null;
     }
 
-    public function setZip($zip)
+    public function setZip($zip): void
     {
         $this->_customer_zip = $this->_setNullIfEmpty($zip);
     }
@@ -107,7 +107,7 @@ class Customer
         return $this->_customer_zip;
     }
 
-    public function setPhone($phone)
+    public function setPhone($phone): void
     {
         $this->_customer_phone = $this->_setNullIfEmpty($phone);
     }
@@ -117,7 +117,7 @@ class Customer
         return $this->_customer_phone;
     }
 
-    public function setBirthDate($birthdate)
+    public function setBirthDate($birthdate): void
     {
         $this->_customer_birth_date = $this->_setNullIfEmpty($birthdate);
     }

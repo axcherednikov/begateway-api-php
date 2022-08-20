@@ -15,9 +15,9 @@ abstract class ResponseBase
         $this->_raw_response = $message;
     }
 
-    abstract public function isSuccess();
+    abstract public function isSuccess(): bool;
 
-    public function isError()
+    public function isError(): bool
     {
         if (! is_object($this->getResponse())) {
             return true;
@@ -34,7 +34,7 @@ abstract class ResponseBase
         return false;
     }
 
-    public function isValid()
+    public function isValid(): bool
     {
         return ! ($this->_response === false || $this->_response == null);
     }
@@ -44,7 +44,7 @@ abstract class ResponseBase
         return $this->_response;
     }
 
-    public function getResponseArray()
+    public function getResponseArray(): array
     {
         return $this->_responseArray;
     }

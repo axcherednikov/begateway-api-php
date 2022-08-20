@@ -18,7 +18,7 @@ class Card
     protected $_card_skip_threed_secure = false;
     protected $_is_encrypted = false;
 
-    public function setCardNumber($number)
+    public function setCardNumber($number): void
     {
         $this->_card_number = $number;
     }
@@ -28,7 +28,7 @@ class Card
         return $this->_card_number;
     }
 
-    public function setCardHolder($holder)
+    public function setCardHolder($holder): void
     {
         $this->_card_holder = $holder;
     }
@@ -52,7 +52,7 @@ class Card
         return $this->_card_exp_month;
     }
 
-    public function setCardExpYear($exp_year)
+    public function setCardExpYear($exp_year): void
     {
         $this->_card_exp_year = $exp_year;
     }
@@ -62,7 +62,7 @@ class Card
         return $this->_card_exp_year;
     }
 
-    public function setCardCvc($cvc)
+    public function setCardCvc($cvc): void
     {
         $this->_card_cvc = $cvc;
     }
@@ -72,7 +72,7 @@ class Card
         return $this->_card_cvc;
     }
 
-    public function setCardToken($token)
+    public function setCardToken($token): void
     {
         $this->_card_token = $token;
     }
@@ -82,7 +82,7 @@ class Card
         return $this->_card_token;
     }
 
-    public function setSkip3D($skip = false)
+    public function setSkip3D($skip = false): void
     {
         $this->_card_skip_threed_secure = $skip;
     }
@@ -92,7 +92,7 @@ class Card
         return $this->_card_skip_threed_secure;
     }
 
-    public function setBrand($brand)
+    public function setBrand($brand): void
     {
         $this->_brand = $brand;
     }
@@ -102,7 +102,7 @@ class Card
         return $this->_brand;
     }
 
-    public function setFirst_1($digit)
+    public function setFirst_1($digit): void
     {
         $this->_first_1 = $digit;
     }
@@ -112,7 +112,7 @@ class Card
         return $this->_first_1;
     }
 
-    public function setLast_4($digits)
+    public function setLast_4($digits): void
     {
         $this->_last_4 = $digits;
     }

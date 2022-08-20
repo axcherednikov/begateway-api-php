@@ -21,6 +21,7 @@ class Webhook extends Response
             $public_key = chunk_split($public_key, 64);
             $public_key = "-----BEGIN PUBLIC KEY-----\n" . $public_key . '-----END PUBLIC KEY-----';
             $key = openssl_pkey_get_public($public_key);
+
             if ($key) {
                 return openssl_verify($this->getRawResponse(), $signature, $key, OPENSSL_ALGO_SHA256) == 1;
             }
@@ -29,10 +30,10 @@ class Webhook extends Response
         $this->process_auth_data();
 
         return $this->_id == Settings::$shopId
-               && $this->_key == Settings::$shopKey;
+            && $this->_key == Settings::$shopKey;
     }
 
-    private function process_auth_data()
+    private function process_auth_data(): void
     {
         $token = null;
 
@@ -47,7 +48,7 @@ class Webhook extends Response
 
         if ($token != null) {
             if (strpos(strtolower($token), 'basic') === 0) {
-                list($this->_id, $this->_key) = explode(':', base64_decode(substr($token, 6)));
+                [$this->_id, $this->_key] = explode(':', base64_decode(substr($token, 6)));
             }
         }
     }

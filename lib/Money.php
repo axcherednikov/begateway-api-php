@@ -16,18 +16,18 @@ class Money
 
     public function getCents()
     {
-        $cents = ($this->_cents) ? $this->_cents : intval(strval($this->_amount * $this->_currency_multiplyer()));
+        $cents = $this->_cents ?: intval(strval($this->_amount * $this->_currency_multiplyer()));
 
         return $cents;
     }
 
-    public function setCents($cents)
+    public function setCents($cents): void
     {
         $this->_cents = intval($cents);
         $this->_amount = null;
     }
 
-    public function setAmount($amount)
+    public function setAmount($amount): void
     {
         $this->_amount = $amount;
         $this->_cents = null;
@@ -44,7 +44,7 @@ class Money
         return floatval(strval($amount));
     }
 
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $this->_currency = $currency;
     }
@@ -80,6 +80,6 @@ class Money
 
     private function _currency_multiplyer()
     {
-        return pow(10, $this->_currency_power());
+        return 10 ** $this->_currency_power();
     }
 }

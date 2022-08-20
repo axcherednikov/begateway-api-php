@@ -15,7 +15,7 @@ class CreditOperation extends ApiAbstract
         $this->card = new Card();
     }
 
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->_description = $description;
     }
@@ -25,7 +25,7 @@ class CreditOperation extends ApiAbstract
         return $this->_description;
     }
 
-    public function setTrackingId($tracking_id)
+    public function setTrackingId($tracking_id): void
     {
         $this->_tracking_id = $tracking_id;
     }
@@ -35,18 +35,18 @@ class CreditOperation extends ApiAbstract
         return $this->_tracking_id;
     }
 
-    protected function _buildRequestMessage()
+    protected function _buildRequestMessage(): array
     {
         $request = [
-          'request' => [
-            'amount' => $this->money->getCents(),
-            'currency' => $this->money->getCurrency(),
-            'description' => $this->getDescription(),
-            'tracking_id' => $this->getTrackingId(),
-            'credit_card' => [
-              'token' => $this->card->getCardToken(),
+            'request' => [
+                'amount' => $this->money->getCents(),
+                'currency' => $this->money->getCurrency(),
+                'description' => $this->getDescription(),
+                'tracking_id' => $this->getTrackingId(),
+                'credit_card' => [
+                    'token' => $this->card->getCardToken(),
+                ],
             ],
-          ],
         ];
 
         Logger::getInstance()->write($request, Logger::DEBUG, get_class() . '::' . __FUNCTION__);

@@ -8,7 +8,7 @@ use Exception;
 
 abstract class ApiAbstract
 {
-    abstract protected function _buildRequestMessage();
+    abstract protected function _buildRequestMessage(): array;
 
     protected $_language;
     protected $_timeout_connect = 10;
@@ -38,20 +38,20 @@ abstract class ApiAbstract
         );
     }
 
-    protected function _endpoint()
+    protected function _endpoint(): string
     {
         return Settings::$gatewayBase . '/transactions/' . $this->_getTransactionType();
     }
 
     protected function _getTransactionType()
     {
-        list($module, $klass) = explode('\\', get_class($this));
+        [$module, $klass] = explode('\\', get_class($this));
         $klass = str_replace('Operation', '', $klass);
 
         return strtolower($klass) . 's';
     }
 
-    public function setLanguage($language_code)
+    public function setLanguage($language_code): void
     {
         if (in_array($language_code, Language::getSupportedLanguages())) {
             $this->_language = $language_code;
@@ -65,17 +65,17 @@ abstract class ApiAbstract
         return $this->_language;
     }
 
-    public function setConnectTimeout($timeout)
+    public function setConnectTimeout($timeout): void
     {
         $this->_timeout_connect = $timeout;
     }
 
-    public function setTimeout($timeout)
+    public function setTimeout($timeout): void
     {
         $this->_timeout_read = $timeout;
     }
 
-    public function setRequestHeaders($headers)
+    public function setRequestHeaders($headers): void
     {
         $this->_headers = $headers;
     }
